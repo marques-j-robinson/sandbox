@@ -11,5 +11,5 @@ $ source venv/bin/activate
 # Install requirements
 (venv) $ pip install -r requirements.txt
 # Start server
-(venv) $ flask --app todo run
+(venv) $ python app.py
 ```

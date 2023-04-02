@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -19,8 +19,10 @@ class Todo(db.Model):
 
 @app.route('/')
 def index():
-	return 'Hello, World!'
+	todo_list = Todo.query.all()
+	return render_template("base.html", todo_list=todo_list)
 
 if __name__ == "__main__":
-	db.create_all()
+	with app.app_context():
+		db.create_all()
 	app.run(debug=True)
